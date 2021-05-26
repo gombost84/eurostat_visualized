@@ -9,7 +9,7 @@ filename = str(datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
 class jsonMagic(object):
     def jsonPrint(object):
         with open(filename + ".txt", 'w') as data:
-            data.write(json.dumps(object))
+            data.write(json.loads(object))
 
 class ProcessBulk:
     def __init__(self, data):
