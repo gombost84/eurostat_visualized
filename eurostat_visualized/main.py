@@ -1,12 +1,13 @@
 if __name__ == '__main__':
 
-    import requests
-    import eurostat_connections as connections
-    import eurostat_json as ejson
+    import requests as r
+    import eurostat_connections as con
+    import bulk_download as bd
 
-    response = requests.get(connections.eurostatConnection.connect())
-    ejson.jsonMagic.Logs(response)
-    ejson.jsonMagic.jsonPrint(response.json())
+    response = r.get(con.eurostatConnection.connect())
 
-else:
-    print("Function__name__ is set to: {}".format(__name__))
+    if response.status_code == 200:
+        print('It went ok.')
+        bd.jsonMagic(response.text)
+    else:
+        print(f'Something went wrong. The error code is: {response.status_code}')

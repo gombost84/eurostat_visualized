@@ -1,15 +1,13 @@
-import requests
 import datetime
 import json
 
-bulk_file = requests.get("https://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing?file=table_of_contents_en.txt")
-
 filename = str(datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
 
-class jsonMagic(object):
-    def jsonPrint(object):
-        with open(filename + ".txt", 'w') as data:
-            data.write(json.loads(object))
+def jsonMagic(input):
+    with open(filename + ".txt", 'w') as data:
+        data.write(input)
+    data.close()
+    print(f'Data saved as {filename}')
 
 class ProcessBulk:
     def __init__(self, data):
@@ -22,5 +20,3 @@ class ProcessBulk:
         self.start = start.strip('\"')
         self.end = end.strip('\"')
         self.values = values.strip('\"')
-
-jsonMagic.jsonPrint(bulk_file.text)
