@@ -1,18 +1,34 @@
-class eurostatConnection():
-    def connect():
-        eurostat_url = "https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/"  
+import requests as r
+import xmltodict as xtd
+
+
+class EurostatConnection():
+
+    def __init__(self):
         
-        parameters = {
-            "geo" : "EU28",
-            "precision" : "1",
-            "na_item" : "B1GQ",
-            "unit" : "CP_MEUR",
-            "time" : "2010",
-            "time" : "2011"
-            }
+        self.bulk_download = "https://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing?sort=1&file=table_of_contents.xml"
+        self.base_url = "https://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/"
 
-        datasetCode = "teina010" #input("Dataset: ")
-        #parameters[dictkey] = input("Parameter for " + dictkey + ": ")
 
-        return eurostat_url + datasetCode #, params = parameters
+    def bulklist_download(self):
+
+        with open('bulklist.xml', 'w+', encoding = 'utf-8') as f:
+            file = r.get(self.bulk_download)
+            f.write(file.text)
+
+    #def connect(self):
+        
+    #    parameters = {
+    #        "geo" : "eu28",
+    #        "precision" : "1",
+    #        "na_item" : "b1gq",
+    #        "unit" : "cp_meur",
+    #        "time" : "2010",
+    #        "time" : "2011"
+    #        }
+
+    #    datasetcode = "teina010" #input("dataset: ")
+    #    #parameters[dictkey] = input("parameter for " + dictkey + ": ")
+
+    #    return self.url + datasetcode #, params = parameters
 
