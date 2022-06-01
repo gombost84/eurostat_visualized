@@ -1,7 +1,7 @@
 if __name__ == '__main__':
 
     import requests as r
-    import eurostat_connections
+    from eurostat_connections import EurostatConnection
     import bulk_download
 
     response = r.get(con.eurostatConnection.connect())
