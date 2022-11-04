@@ -1,7 +1,7 @@
 import datetime
 import json
 
-filename = str(datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
+FILENAME = str(datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
 
 def jsonMagic(input):
     with open(filename + ".txt", 'w') as data:
