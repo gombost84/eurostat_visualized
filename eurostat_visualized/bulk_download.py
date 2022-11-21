@@ -4,10 +4,10 @@ import json
 FILENAME = str(datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
 
 def jsonMagic(input):
-    with open(filename + ".txt", 'w') as data:
+    with open(FILENAME + ".txt", 'w') as data:
         data.write(input)
     data.close()
-    print(f'Data saved as {filename}')
+    print(f'Data saved as {FILENAME}')
 
 class ProcessBulk:
     def __init__(self, data):
